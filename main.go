@@ -69,7 +69,29 @@ func dateHandle(w http.ResponseWriter, r *http.Request) {
 	}
 
 	r.Header.Set("Content-Type", "application/json")
-	_, _ = w.Write([]byte(`{"code": 200, "msg": "query ok", "is_holiday": ` + strconv.FormatBool(holiday) + `, "is_working_day": ` + strconv.FormatBool(workingday) + `}`))
+	_, _ = w.Write([]byte(`{"code": 200, "msg": "query ok", "date": "` + parsedDate.Format(time.DateOnly) + `", "is_holiday": ` + strconv.FormatBool(holiday) + `, "is_working_day": ` + strconv.FormatBool(workingday) + `, "weekday": "` + weekdayZh(parsedDate) + `"}`))
+
+	return
+}
+
+func weekdayZh(date time.Time) (weekdayStr string) {
+	weekday := date.Weekday()
+	switch weekday {
+	case time.Monday:
+		weekdayStr = "星期一"
+	case time.Tuesday:
+		weekdayStr = "星期二"
+	case time.Wednesday:
+		weekdayStr = "星期三"
+	case time.Thursday:
+		weekdayStr = "星期四"
+	case time.Friday:
+		weekdayStr = "星期五"
+	case time.Saturday:
+		weekdayStr = "星期六"
+	case time.Sunday:
+		weekdayStr = "星期日"
+	}
 
 	return
 }
