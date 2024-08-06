@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/bastengao/chinese-holidays-go/holidays"
+	"github.com/godcong/chronos"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -68,8 +69,9 @@ func dateHandle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	lunarDate := chronos.New(parsedDate).LunarDate()
 	r.Header.Set("Content-Type", "application/json")
-	_, _ = w.Write([]byte(`{"code": 200, "msg": "query ok", "date": "` + parsedDate.Format(time.DateOnly) + `", "is_holiday": ` + strconv.FormatBool(holiday) + `, "is_working_day": ` + strconv.FormatBool(workingday) + `, "weekday": "` + weekdayZh(parsedDate) + `"}`))
+	_, _ = w.Write([]byte(`{"code": 200, "msg": "query ok", "date": "` + parsedDate.Format(time.DateOnly) + `", "lunar_date": "` + lunarDate + `", "is_holiday": ` + strconv.FormatBool(holiday) + `, "is_working_day": ` + strconv.FormatBool(workingday) + `, "weekday": "` + weekdayZh(parsedDate) + `"}`))
 
 	return
 }

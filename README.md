@@ -21,6 +21,7 @@ curl http://127.0.0.1/api/holidays?date=2024-08-06
   "code": 200,
   "msg": "query ok",
   "date": "2024-08-06",
+  "lunar_date": "甲辰年七月初三日",
   "is_holiday": false,
   "is_working_day": true,
   "weekday": "星期二"
@@ -34,6 +35,7 @@ curl http://127.0.0.1/api/holidays?date=2024-08-06
 |code|返回状态值（200：表示成功，500：表示失败）|
 |msg|描述|
 |date|查询日期|
+|lunar_date|农历日期|
 |is_holiday|是否是节假日|
 |is_working_day|是否是工作日|
 |weekday|星期几|
