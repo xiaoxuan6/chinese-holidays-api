@@ -5,7 +5,7 @@
 ## Docker
 
 ```docker
-docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holiday-api/chinese-holiday-api:latest
+docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holidays-api/chinese-holidays-api:latest
 ```
 
 ## Api
