@@ -1,0 +1,19 @@
+builds:
+  - skip: true
+
+release:
+  footer: |
+    Full Changelog: [{{ .PreviousTag }}...{{ .Tag }}](https://{{ .ModulePath }}/compare/{{ .PreviousTag }}...{{ .Tag }})
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+  groups:
+    - title: '🚀 Features'
+      regexp: 'feat:'
+    - title: '🐛 Bug Fixes'
+      regexp: 'fix:'
+    - title: '🔨 Others'

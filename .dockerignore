@@ -1,4 +1,5 @@
 .github/
 .gitignore
+.goreleaser.yaml
 LICENSE
 README.md
