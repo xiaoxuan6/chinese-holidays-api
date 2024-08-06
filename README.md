@@ -14,6 +14,8 @@ docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holidays-api/ch
 
 ```shell
 curl http://127.0.0.1/api/holidays/2024-08-06
+or
+curl http://127.0.0.1/api/holidays?date=2024-08-06
 
 {
   "code": 200,
