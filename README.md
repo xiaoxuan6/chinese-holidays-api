@@ -19,14 +19,14 @@ curl http://127.0.0.1/api/holidays?date=2024-08-06
 
 {
   "code": 200,
-  "date": "2024-08-05",
+  "date": "2024-08-05", <- version v0.0.2
   "is_holiday": false,
   "is_working_day": true,
-  "lunar_date": "七月初二日",
-  "lunar_year": "甲辰年",
+  "lunar_date": "七月初二日", <- version v0.0.3
+  "lunar_year": "甲辰年", <- version v0.0.4
   "msg": "query ok",
-  "weekday": "星期一",
-  "zh_year": "龙年"
+  "weekday": "星期一", <- version v0.0.2
+  "zh_year": "龙年" <- version v0.0.4
 }
 ```
 
