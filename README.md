@@ -19,12 +19,14 @@ curl http://127.0.0.1/api/holidays?date=2024-08-06
 
 {
   "code": 200,
-  "msg": "query ok",
-  "date": "2024-08-06",
-  "lunar_date": "甲辰年七月初三日",
+  "date": "2024-08-05",
   "is_holiday": false,
   "is_working_day": true,
-  "weekday": "星期二"
+  "lunar_date": "七月初二日",
+  "lunar_year": "甲辰年",
+  "msg": "query ok",
+  "weekday": "星期一",
+  "zh_year": "龙年"
 }
 ```
 
@@ -36,9 +38,11 @@ curl http://127.0.0.1/api/holidays?date=2024-08-06
 |msg|描述|
 |date|查询日期|
 |lunar_date|农历日期|
+|lunar_year|农历年份|
 |is_holiday|是否是节假日|
 |is_working_day|是否是工作日|
 |weekday|星期几|
+|zh_year|生肖年份|
 
 ## Features
 
