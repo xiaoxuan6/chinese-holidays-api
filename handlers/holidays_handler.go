@@ -12,12 +12,12 @@ import (
 )
 
 func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
-	r.Header.Set("Content-Type", "application/json")
+    w.Header().Set("Content-Type", "application/json")
 	_, _ = w.Write([]byte(`{"code": 500, "msg": "route [` + r.RequestURI + `] not found!"}`))
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	r.Header.Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json")
 	_, _ = w.Write([]byte(`{"code": 200, "msg": "中国特色的休假安排或者工作日查询 api 接口，所有数据均来自国务院发布，\n 源码地址：https://github.com/xiaoxuan6/chinese-holidays-api"}`))
 }
 
@@ -48,14 +48,14 @@ func DateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if len(date) < 1 {
-		r.Header.Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json")
 		_, _ = w.Write([]byte(`{"code": 500, "msg": "参数：date 不能为空！"}`))
 		return
 	}
 
 	parsedDate, err := time.Parse(time.DateOnly, date)
 	if err != nil {
-		r.Header.Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json")
 		_, _ = w.Write([]byte(`{"code": 500, "msg": "Invalid date format"}`))
 		return
 	}
@@ -63,14 +63,14 @@ func DateHandler(w http.ResponseWriter, r *http.Request) {
 	queryer, _ := holidays.BundleQueryer()
 	holiday, err := queryer.IsHoliday(parsedDate)
 	if err != nil {
-		r.Header.Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json")
 		_, _ = w.Write([]byte(`{"code": 500, "msg": "query holiday fail: "` + err.Error() + `}`))
 		return
 	}
 
 	workingday, err := queryer.IsWorkingday(parsedDate)
 	if err != nil {
-		r.Header.Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json")
 		_, _ = w.Write([]byte(`{"code": 500, "msg": "query working day fail: "` + err.Error() + `}`))
 		return
 	}
@@ -91,7 +91,7 @@ func DateHandler(w http.ResponseWriter, r *http.Request) {
 
 	b, _ := json.Marshal(response)
 
-	r.Header.Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json")
 	_, _ = w.Write(b)
 
 	return
