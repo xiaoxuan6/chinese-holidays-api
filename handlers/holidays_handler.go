@@ -1,4 +1,4 @@
-package handles
+package handlers
 
 import (
 	"encoding/json"
@@ -11,12 +11,12 @@ import (
 	"time"
 )
 
-func NotFoundHandle(w http.ResponseWriter, r *http.Request) {
+func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
 	r.Header.Set("Content-Type", "application/json")
 	_, _ = w.Write([]byte(`{"code": 500, "msg": "route [` + r.RequestURI + `] not found!"}`))
 }
 
-func IndexHandle(w http.ResponseWriter, r *http.Request) {
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	r.Header.Set("Content-Type", "application/json")
 	_, _ = w.Write([]byte(`{"code": 200, "msg": "中国特色的休假安排或者工作日查询 api 接口，所有数据均来自国务院发布，\n 源码地址：https://github.com/xiaoxuan6/chinese-holidays-api"}`))
 }
@@ -40,7 +40,7 @@ var (
 	weekly = []string{"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"}
 )
 
-func DateHandle(w http.ResponseWriter, r *http.Request) {
+func DateHandler(w http.ResponseWriter, r *http.Request) {
 	date := r.URL.Query().Get("date")
 	if date == "" {
 		vars := mux.Vars(r)
