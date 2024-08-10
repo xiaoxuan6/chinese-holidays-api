@@ -1,0 +1,9 @@
+.github
+.dockerignore
+.editorconfig
+.gitignore
+.goreleaser.yaml
+Dockerfile
+LICENSE
+main.go
+README.md

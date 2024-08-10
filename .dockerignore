@@ -1,5 +1,9 @@
 .github/
+api/
+.editorconfig
 .gitignore
+.vercelignore
 .goreleaser.yaml
 LICENSE
 README.md
+vercel.json
