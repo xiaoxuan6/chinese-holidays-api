@@ -2,6 +2,8 @@
 
 提供中国休假或者工作日查询
 
+## Install
+
 <details>
 <summary><b>Run</b></summary>
 
@@ -56,7 +58,7 @@ bash <(curl -sSL https://github-mirror.us.kg/https://github.com/xiaoxuan6/chines
 bash <(curl -sSL https://github-mirror.us.kg/https://github.com/xiaoxuan6/chinese-holidays-api/blob/main/holidas.sh) remove
 
 ```
-<details>
+</details>
 
 ## Api
 
