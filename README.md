@@ -2,10 +2,33 @@
 
 提供中国休假或者工作日查询
 
+## Run
+
+### 直接运行
+
+```shell
+go run main.go
+```
+
+### 自定义端口
+
+```shell
+export HOLIDAY_PORT=9002
+go run main.go
+```
+
 ## Docker
+
+### 直接运行
 
 ```docker
 docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holidays-api/chinese-holidays-api:latest
+```
+
+### 自定义端口
+
+```docker
+docker run --name=holiday -e HOLIDAY_PORT=9002 -p 9002:9002 -d ghcr.io/xiaoxuan6/chinese-holidays-api/chinese-holidays-api:latest
 ```
 
 ## Api
@@ -19,7 +42,7 @@ curl http://127.0.0.1/api/holidays?date=2024-08-06
 
 {
   "code": 200,
-  "date": "2024-08-05", <- version v0.0.2
+  "date": "2024-08-06", <- version v0.0.2
   "is_holiday": false,
   "is_working_day": true,
   "lunar_date": "七月初二日", <- version v0.0.3

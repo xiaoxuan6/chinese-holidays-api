@@ -17,9 +17,10 @@ RUN apk update && \
     apk add --no-cache tzdata
 
 ENV TZ=Asia/Shanghai
+ENV HOLIDAY_PORT=80
 
 COPY --from=build-dev /go/src/app/holiday ./holiday
 
-EXPOSE 80
+EXPOSE $HOLIDAY_PORT
 
 CMD ["./holiday"]

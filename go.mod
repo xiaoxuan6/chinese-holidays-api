@@ -8,3 +8,5 @@ require (
 	github.com/gorilla/mux v1.8.1
 	github.com/huandu/xstrings v1.5.0
 )
+
+require github.com/kelseyhightower/envconfig v1.4.0
