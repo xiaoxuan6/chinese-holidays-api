@@ -2,9 +2,11 @@
 
 提供中国休假或者工作日查询
 
-## Run
+<details>
+<summary><b>Run</b></summary>
 
 ### 直接运行
+
 
 ```shell
 go run main.go
@@ -12,14 +14,18 @@ go run main.go
 
 ### 自定义端口
 
+
 ```shell
 export HOLIDAY_PORT=9002
 go run main.go
 ```
+</details>
 
-## Docker
+<details>
+<summary><b>Docker</b></summary>
 
 ### 直接运行
+
 
 ```docker
 docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holidays-api/chinese-holidays-api:latest
@@ -27,9 +33,30 @@ docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holidays-api/ch
 
 ### 自定义端口
 
+
 ```docker
 docker run --name=holiday -e HOLIDAY_PORT=9002 -p 9002:9002 -d ghcr.io/xiaoxuan6/chinese-holidays-api/chinese-holidays-api:latest
 ```
+</details>
+
+<details>
+<summary><b>Shell</b></summary>
+
+### Install
+
+
+```shell
+bash <(curl -sSL https://github-mirror.us.kg/https://github.com/xiaoxuan6/chinese-holidays-api/blob/main/holidays.sh) install
+```
+
+### Remove
+
+
+```shell
+bash <(curl -sSL https://github-mirror.us.kg/https://github.com/xiaoxuan6/chinese-holidays-api/blob/main/holidas.sh) remove
+
+```
+<details>
 
 ## Api
 
