@@ -14,7 +14,8 @@ RUN go env -w GO111MODULE=on && \
 FROM alpine
 
 RUN apk update && \
-    apk add --no-cache tzdata
+    apk add --no-cache tzdata && \
+    rm -rf /var/cache/apk/*
 
 ENV TZ=Asia/Shanghai
 ENV HOLIDAY_PORT=80
