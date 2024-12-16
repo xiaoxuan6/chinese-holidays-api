@@ -4,7 +4,6 @@ set -e
 
 DIR=/root/holidays
 SERVICE_FILE="/etc/systemd/system/holidays.service"
-NGINX_FILE="/etc/nginx/modules-enabled/holidays.conf"
 
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m | tr '[:upper:]' '[:lower:]')
@@ -51,33 +50,6 @@ EOL
     systemctl enable holidays.service
 }
 
-function add_nginx() {
-    if [ -x "$(command -v nginx)" ]; then
-        local nginxFile="/etc/nginx/modules-enabled"
-        if [ -d "$nginxFile" ]; then
-            cat <<EOL | sudo tee "$NGINX_FILE" >/dev/null
-stream {
-    upstream holidays_api {
-        server 127.0.0.1:$2;
-    }
-
-    server {
-        listen $1;
-        proxy_pass holidays_api;
-    }
-}
-EOL
-            systemctl reload nginx
-        else
-            echo -e "${RED}nginx 配置文件夹[$nginxFile]不存在！请手动配置nginx反向代理${RESET}"
-            exit 1
-        fi
-    else
-        echo -e "${RED}nginx service not exist!${RESET}"
-        exit 1
-    fi
-}
-
 function install() {
     mkdir -p "$DIR"
     cd "$DIR" || exit 1
@@ -116,19 +88,10 @@ function install() {
         exit 1
     fi
 
-    # shellcheck disable=SC2162
-    read -p "是否设置nginx反向代理?(y/n)" disable_port
-    if [[ "$disable_port" =~ ^[Yy]$ ]]; then
-        # shellcheck disable=SC2155
-        local new_port=$((port + 1))
-        add_nginx "$new_port" "$port"
-        echo -e "${GREEN}反向代理设置成功，代理地址：127.0.0.1:$new_port${RESET}"
-    fi
-
-    echo "holidays service install done."
+    echo -e "${GREEN}holidays service install done.${RESET}"
 }
 
-function remove() {
+function uninstall() {
     systemctl stop holidays.service
     systemctl disable holidays.service
 
@@ -148,20 +111,19 @@ function remove() {
         echo "文件夹 $DIR 不存在！"
     fi
 
-    if [ -f "$NGINX_FILE" ]; then
-        rm "$NGINX_FILE"
-        systemctl reload nginx
-    fi
-
-    echo -e "${GREEN}holidays service remove successful!${RESET}"
+    echo -e "${GREEN}holidays service uninstall successful!${RESET}"
 }
 
 case $1 in
 install) install "$2" ;;
-remove) remove ;;
+uninstall) uninstall ;;
+reinstall)
+    remove
+    install
+    ;;
 *)
     echo "Not found $1 option"
-    echo "Usage: $0 {install|remove}"
+    echo "Usage: $0 {install|uninstall|reinstall}"
     echo ""
     exit 1
     ;;

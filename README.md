@@ -51,12 +51,12 @@ docker run --name=holiday -e HOLIDAY_PORT=9002 -p 9002:9002 -d ghcr.io/xiaoxuan6
 bash <(curl -sSL https://github-mirror.us.kg/https://github.com/xiaoxuan6/chinese-holidays-api/blob/main/holidays.sh) install
 ```
 
-### Remove
+### Uninstall
 
 
 ```shell
-bash <(curl -sSL https://github-mirror.us.kg/https://github.com/xiaoxuan6/chinese-holidays-api/blob/main/holidas.sh) remove
 
+bash <(curl -sSL https://github-mirror.us.kg/https://github.com/xiaoxuan6/chinese-holidays-api/blob/main/holidas.sh) uninstall
 ```
 </details>
 
