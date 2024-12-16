@@ -10,19 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: tag name
-        id: tags
-        run: |
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          echo "输出版本号：$VERSION"
-          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
       - name: Build and publish image
-        uses: VaultVulp/gp-docker-action@1.6.0
+        uses: xiaoxuan6/docker-build-action@develop
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          image-name: chinese-holidays-api
-          additional-image-tags: "${{ steps.tags.outputs.VERSION }}"
-          custom-args: --platform=linux/arm64,linux/amd64
+          extract-git-tag: true
+          image-platform: linux/arm64,linux/amd64
 
   goreleaser:
     runs-on: ubuntu-latest
