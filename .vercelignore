@@ -4,6 +4,7 @@
 .gitignore
 .goreleaser.yaml
 Dockerfile
+holidays.sh
 LICENSE
 main.go
 README.md

@@ -2,9 +2,9 @@
 api/
 .editorconfig
 .gitignore
-.vercelignore
 .goreleaser.yaml
+.vercelignore
+holidays.sh
 LICENSE
 README.md
 vercel.json
-holidays.sh
