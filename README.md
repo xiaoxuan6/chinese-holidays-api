@@ -30,14 +30,14 @@ go run main.go
 
 
 ```docker
-docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holidays-api/chinese-holidays-api:latest
+docker run --name=holidays -p 80:80 -d ghcr.io/xiaoxuan6/chinese-holidays-api:v0.2.0
 ```
 
 ### 自定义端口
 
 
 ```docker
-docker run --name=holiday -e HOLIDAY_PORT=9002 -p 9002:9002 -d ghcr.io/xiaoxuan6/chinese-holidays-api/chinese-holidays-api:latest
+docker run --name=holiday -e HOLIDAY_PORT=9002 -p 9002:9002 -d ghcr.io/xiaoxuan6/chinese-holidays-api:v0.2.0
 ```
 </details>
 
